@@ -5,13 +5,91 @@
     "designation": "Product Manager",
     "username": "fake:{username}",
     "password": "fake:{password}",
-    "address1": "fake:{address}",
     "latitude": "fake:{latitude}",
     "longitude": "fake:{longitude}",
     "latitudeInRange": "fake:{latituderange:23.1,56.7}",
-    "address": {
+    "fixedAddress": {
         "city": "Mumbai",
         "state": "Maharashtra",
         "country": "India"
+    },
+    "intArray": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "lexify": "fake:{lexify:My name is ???? ???????}",
+    "numerify": "fake:{numerify:###-###-####}",
+    "dateTime": {
+        "date": "fake:{date}",
+        "nanosecond": "fake:{nanosecond}",
+        "second": "fake:{second}",
+        "minute": "fake:{minute}",
+        "hour": "fake:{hour}",
+        "day": "fake:{day}",
+        "weekday": "fake:{weekday}",
+        "year": "fake:{year}",
+        "timezone": "fake:{timezone}",
+        "timezoneabv": "fake:{timezoneabv}",
+        "timezonefull": "fake:{timezonefull}",
+        "timezoneoffse": "fake:{timezoneoffset}",
+        "timezoneregion": "fake:{timezoneregion}"
+    },
+    "person": {
+        "person": "fake:{person}",
+        "name": "fake:{name}",
+        "nameprefix": "fake:{nameprefix}",
+        "namesuffix": "fake:{namesuffix}",
+        "firstname": "fake:{firstname}",
+        "lastname": "fake:{lastname}",
+        "gender": "fake:{gender}",
+        "ssn": "fake:{ssn}",
+        "email": "fake:{email}",
+        "phone": "fake:{phone}",
+        "phoneformatted": "fake:{phoneformatted}"
+    },
+    "payment": {
+        "price": "fake:{price}",
+        "creditcard": "fake:{creditcard}",
+        "creditcardcvv": "fake:{creditcardcvv}",
+        "creditcardexp": "fake:{creditcardexp}",
+        "creditcardnumber": "fake:{creditcardnumber}",
+        "creditcardtype": "fake:{creditcardtype}",
+        "currency": "fake:{currency}",
+        "currencylong": "fake:{currencylong}",
+        "currencyshort": "fake:{currencyshort}",
+        "achrouting": "fake:{achrouting}",
+        "achaccount": "fake:{achaccount}",
+        "bitcoinaddress": "fake:{bitcoinaddress}",
+        "bitcoinprivatekey": "fake:{bitcoinprivatekey}"
+    },
+    "company": {
+        "bs": "fake:{bs}",
+        "buzzword": "fake:{buzzword}",
+        "company": "fake:{company}",
+        "companysuffix": "fake:{companysuffix}",
+        "jo": "fake:{job}",
+        "jobdescriptor": "fake:{jobdescriptor}",
+        "joblevel": "fake:{joblevel}",
+        "jobtitle": "fake:{jobtitle}"
+    },
+    "address": {
+        "address": "fake:{address}",
+        "city ": "fake:{city}",
+        "country ": "fake:{country}",
+        "countryabr ": "fake:{countryabr}",
+        "state ": "fake:{state}",
+        "stateabr ": "fake:{stateabr}",
+        "street ": "fake:{street}",
+        "streetname ": "fake:{streetname}",
+        "streetnumber ": "fake:{streetnumber}",
+        "streetprefix ": "fake:{streetprefix}",
+        "streetsuffix ": "fake:{streetsuffix}",
+        "zip ": "fake:{zip}",
+        "latitude": "fake:{latitude}",
+        "longitude ": "fake:{longitude}",
+        "latituderange": "fake:{latituderange:30.1,60.4}",
+        "longituderange": "fake:{longituderange:45.3,165.1}"
     }
 }

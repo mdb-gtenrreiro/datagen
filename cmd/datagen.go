@@ -168,15 +168,23 @@ func fakeData(m map[string]interface{}) {
 					strings.HasPrefix(funcName, "latituderange:") ||
 					strings.HasPrefix(funcName, "longituderange:") ||
 					strings.HasPrefix(funcName, "float32range:") ||
-					strings.HasPrefix(funcName, "float64range:") {
+					strings.HasPrefix(funcName, "float64range:") ||
+					strings.HasPrefix(funcName, "price:") {
 
-					params := getParams(funcName)
+					params := getMinMaxParams(funcName)
+					funcName = funcName[:strings.IndexRune(funcName, ':')]
+					info := gofaker.GetFuncLookup(funcName)
+					val2, _ := info.Call(&params, info)
+					m[k] = val2
+				} else if strings.HasPrefix(funcName, "numerify:") ||
+					strings.HasPrefix(funcName, "lexify:") {
+
+					params := getStrParam(funcName)
 					funcName = funcName[:strings.IndexRune(funcName, ':')]
 					info := gofaker.GetFuncLookup(funcName)
 					val2, _ := info.Call(&params, info)
 					m[k] = val2
 				} else {
-
 					info := gofaker.GetFuncLookup(funcName)
 					val2, _ := info.Call(nil, info)
 					m[k] = val2
@@ -187,7 +195,7 @@ func fakeData(m map[string]interface{}) {
 	}
 }
 
-func getParams(str string) map[string][]string {
+func getMinMaxParams(str string) map[string][]string {
 	params := make(map[string][]string)
 	min := make([]string, 1)
 	min[0] = str[strings.IndexRune(str, ':')+1 : strings.IndexRune(str, ',')]
@@ -195,6 +203,14 @@ func getParams(str string) map[string][]string {
 	max[0] = str[strings.IndexRune(str, ',')+1:]
 	params["min"] = min
 	params["max"] = max
+	return params
+}
+
+func getStrParam(str string) map[string][]string {
+	params := make(map[string][]string)
+	s := make([]string, 1)
+	s[0] = str[strings.IndexRune(str, ':')+1:]
+	params["str"] = s
 	return params
 }
 

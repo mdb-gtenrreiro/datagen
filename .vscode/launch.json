@@ -10,7 +10,7 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/main.go",
-            "args": ["create", "--from", "gusFile", "--kafka"]
+            "args": ["create", "--from", "./templates/kitchenSink.json", "--filesystem", "-l", "1"]
         }
     ]
 }
