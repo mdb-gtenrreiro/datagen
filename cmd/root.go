@@ -16,6 +16,7 @@ var isFile bool
 var isKafka bool
 var topicName string
 var limit uint64 = 0
+var isVerbose bool = false
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -55,6 +56,7 @@ func init() {
 	rootCmd.PersistentFlags().Uint64VarP(&limit, "limit", "l", 0, "Limits the number of records produced to limit. If omitted, or set to 0, records will be unlimited for Kafka; or 1000 max for filesystem storage")
 	rootCmd.PersistentFlags().StringVarP(&topicName, "topic", "t", "", "Kafka topic name to send data to")
 	rootCmd.MarkFlagsRequiredTogether("kafka", "topic")
+	rootCmd.PersistentFlags().BoolVarP(&isVerbose, "verbose", "v", false, "If specified the data will also be printed on the console.")
 }
 
 // initConfig reads in config file and ENV variables if set.

@@ -87,6 +87,16 @@ func GenData(templateFileName string, isKafka bool, isFile bool, topic string, l
 	startTime := time.Now()
 
 	var count uint64 = 0
+
+	if !isVerbose {
+		go func() {
+			for {
+				time.Sleep(100 * time.Millisecond)
+				fmt.Printf("\rCount: %d", count)
+			}
+		}()
+	}
+
 	for {
 		templateMapCopy := CopyMap(templateMap.(map[string]interface{}))
 		fakeData(templateMapCopy)
@@ -144,7 +154,7 @@ func kafkaProducer() *kafka.Producer {
 			case *kafka.Message:
 				if ev.TopicPartition.Error != nil {
 					log.Printf("Failed to deliver message: %v\n", ev.TopicPartition)
-				} else {
+				} else if isVerbose {
 					log.Printf("Produced event to topic %s: key = %-10s value = %s\n",
 						*ev.TopicPartition.Topic, string(ev.Key), string(ev.Value))
 				}
