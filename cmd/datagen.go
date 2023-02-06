@@ -88,24 +88,35 @@ func GenData(templateFileName string, isKafka bool, isFile bool, topic string, l
 
 	var count uint64 = 0
 	for {
-		if (limit != 0 && count < limit) || limit == 0 {
-			templateMapCopy := CopyMap(templateMap.(map[string]interface{}))
-			fakeData(templateMapCopy)
-			ob, _ := json.Marshal(templateMapCopy)
+		templateMapCopy := CopyMap(templateMap.(map[string]interface{}))
+		fakeData(templateMapCopy)
+		ob, _ := json.Marshal(templateMapCopy)
 
-			// If it is a file don't let it emit endlessly, limit 1000
-			if (limit == 0 && isFile && count < 1000) || (limit != 0 && isFile) {
-				fsw.Write(ob)
+		if limit != 0 {
+			if count < limit {
+				if isFile {
+					fsw.Write(ob)
+				}
+				if isKafka {
+					kc.Write(ob)
+				}
+			} else {
+				break
 			}
-
-			// For Kafka it doesn't matter we let it rip
+		} else {
 			if isKafka {
 				kc.Write(ob)
 			}
-			count += 1
-		} else {
-			break
+
+			if count < 1000 && isFile {
+				fsw.Write(ob)
+			}
+
+			if count >= 1000 && !isKafka {
+				break
+			}
 		}
+		count += 1
 	}
 
 	elapsed := time.Since(startTime)

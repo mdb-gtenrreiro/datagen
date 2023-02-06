@@ -52,6 +52,7 @@ func init() {
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.PersistentFlags().BoolVar(&isFile, "filesystem", false, "If the data should be stored on the local file system, under ./data/")
 	rootCmd.PersistentFlags().BoolVar(&isKafka, "kafka", false, "If the data should be sent to Kafka. Connection properties for kafka must be stored in ./conf/kafka.properties")
+	rootCmd.PersistentFlags().Uint64VarP(&limit, "limit", "l", 0, "Limits the number of records produced to limit. If omitted, or set to 0, records will be unlimited for Kafka; or 1000 max for filesystem storage")
 	rootCmd.PersistentFlags().StringVarP(&topicName, "topic", "t", "", "Kafka topic name to send data to")
 	rootCmd.MarkFlagsRequiredTogether("kafka", "topic")
 }

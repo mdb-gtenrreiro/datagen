@@ -4,8 +4,6 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -31,10 +29,6 @@ var createCmd = &cobra.Command{
 	"status" key, has a value of "active"; that value will remain the same.
 	The other values will be auto generated per the template specification.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("create called")
-		fmt.Println(templateFileName)
-		fmt.Println(isKafka)
-		fmt.Println(isFile)
 		GenData(templateFileName, isKafka, isFile, topicName, limit)
 	},
 }
