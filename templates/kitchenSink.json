@@ -1,0 +1,17 @@
+{
+    "id": "fake:{number:1,11}",
+    "name": "fake:{uint64}",
+    "department": "IT",
+    "designation": "Product Manager",
+    "username": "fake:{username}",
+    "password": "fake:{password}",
+    "address1": "fake:{address}",
+    "latitude": "fake:{latitude}",
+    "longitude": "fake:{longitude}",
+    "latitudeInRange": "fake:{latituderange:23.1,56.7}",
+    "address": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India"
+    }
+}
